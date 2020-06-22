@@ -25,7 +25,7 @@ type pokemon struct {
 }
 
 type poison struct {
-	//structs can also contain whol structs within them.  This is called embeding a struct
+	//structs can also contain whole structs within them.  This is called embeding a struct
 	pokemon
 }
 
