@@ -58,10 +58,11 @@ func main() {
 	fmt.Println(palletTown == lavenderTown) //the values of palletTown and lavenderTown equal true
 
 	//3 Logical Operators
-	fmt.Println(charmander > pikachu && 3 > 2) // both must be true 3 > 25 and 3 > 2 false
-	fmt.Println(rockGym == electricGym || electricGym != rockGym) // either can be true 
-	fmt.Println(!(palletTown == lavenderTown)) // ! converts a statement from true or false
+	fmt.Println(charmander > pikachu && 3 > 2)                    // both must be true 3 > 25 and 3 > 2 false
+	fmt.Println(rockGym == electricGym || electricGym != rockGym) // either can be true
+	fmt.Println(!(palletTown == lavenderTown))                    // ! converts a statement from true or false
 }
+
 // *
 func addPokeBalls(pokeballs int, oakballs int) int {
 	return pokeballs + oakballs

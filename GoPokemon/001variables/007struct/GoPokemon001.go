@@ -7,14 +7,14 @@ Structs are collections of data types.  The contain one ore more data types.
 You can embed a struct within another to gain access to another struct's data types.  Structs can be used as recievers in methods and arguments in functions.
 */
 
-//structs are custom types with an underlying type of struct
-//type     underlying type
+// structs are custom types with an underlying type of struct
+// type     underlying type
 type villains string
 
-//	name       type
+// name       type
 var teamRocket villains
 
-//type   underlying type
+// type   underlying type
 type pokemon struct {
 	//atributes are the data types that structs hold.  They contain a name and an underlying type
 	name     string
@@ -44,22 +44,22 @@ func main() {
 	fmt.Println(Koffing)
 
 	//Using a method created below using the pokemon reciever
-	Meowth.tackel()
+	Meowth.tackle()
 
 }
 
-//structs have many uses such as using them in functions an putting methods on them.  Through the use of functions you can create a struct dynamically also.
+// structs have many uses such as using them in functions an putting methods on them.  Through the use of functions you can create a struct dynamically also.
 func createPokemon(n string, d int, c bool, cp villains) pokemon {
 	newPokemon := pokemon{n, d, c, cp}
 	return newPokemon
 }
 
-//structs can also be used as recievers for using methods
-func (p pokemon) tackel() {
+// structs can also be used as recievers for using methods
+func (p pokemon) tackle() {
 	fmt.Println(p.name, "used tackle...and it hit")
 }
 
-//an interface to access the method if all the methods listed have recievers of the same type
+// an interface to access the method if all the methods listed have recievers of the same type
 type normalMoves interface {
 	tackle()
 }

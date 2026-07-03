@@ -22,7 +22,7 @@ func newPokedex() []string {
 	return thisPokedex
 }
 
-//function to sort pokedex (slice of string) alphabetically
+// function to sort pokedex (slice of string) alphabetically
 func pokedexBubbleSort(pokedex []string) []string {
 	/*The loop starts at the end (the final two indexs of the slice) comparing 2 strings alphabetically.  If the order is needed to swap they do if not they stay.
 	  The loop then moves to the next pair (the two right before the final index).
@@ -40,7 +40,7 @@ func pokedexBubbleSort(pokedex []string) []string {
 	return pokedex
 }
 
-//returns the value of the last entry in the pokedex (slice of string) as a string
+// returns the value of the last entry in the pokedex (slice of string) as a string
 func lastPokedex(pokedex []string) string {
 	//gets the value of the last entry by calculating the length (not zero based) and minus 1
 	return pokedex[len(pokedex)-1]
@@ -56,7 +56,7 @@ func main() {
 	np := newPokedex()
 	//display an un-ordered slice of string
 	//pre-defined slice of string
-	fmt.Println("Predefined",pokedex)
+	fmt.Println("Predefined", pokedex)
 	//displays slice in the order they were entered
 	fmt.Println("no sorting:", np)
 	//displays slice in alphabetically ordered

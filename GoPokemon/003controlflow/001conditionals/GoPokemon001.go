@@ -6,7 +6,7 @@ import "fmt"
 Control flow helps create logical decieciions for data.  Using IF and SWITCH statments to perform if this do that stype of statements you can build a logic into a program.
 */
 
-//a function that uses IF, ELSE IF, and ELSE
+// a function that uses IF, ELSE IF, and ELSE
 func lightscreen(p string) {
 	pokemon := p
 

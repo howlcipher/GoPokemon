@@ -10,16 +10,18 @@ Declaring variables in Go can be done in a few ways.  The following examples are
 
 // new variable
 // 1
-//  name     type
+//
+//	name     type
 var pokeball string
 
-//   2 the variable is declared with a value
-//  name		value      Type is inferred
+//	2 the variable is declared with a value
+//
+// name		value      Type is inferred
 var pokemon = "Psyduck"
 var potion = "" // type string is inferred by "" value is
 
-//   3
-//   name     type     //value
+// 3
+// name     type     //value
 var Pikachu string = "Pikachu"
 
 func declareInFunc() {

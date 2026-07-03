@@ -1,11 +1,10 @@
 package main
 
 import (
-
 	"fmt"
 )
 
-//takes user input and returns a string for Pokemon name
+// takes user input and returns a string for Pokemon name
 func NewPokemon() string {
 	//user input for a string
 	fmt.Print("Enter Pokemon: ")
@@ -14,7 +13,7 @@ func NewPokemon() string {
 	return newPokemon
 }
 
-//takes user input and returns an int for pokedex number entry
+// takes user input and returns an int for pokedex number entry
 func NewPokedex() int {
 	//user input for an int
 	fmt.Print("Enter Pokemon Pokedex Number: ")
@@ -23,8 +22,9 @@ func NewPokedex() int {
 	return newPokedexEntry
 }
 
-//to create a map with 1 or more entries
-//     function           returns
+// to create a map with 1 or more entries
+//
+//	function           returns
 func PokedexMAPEntry() map[int]string {
 	//creating a map
 	var THISpokedexMAP = make(map[int]string)
@@ -34,15 +34,14 @@ func PokedexMAPEntry() map[int]string {
 	fmt.Println("how many entries? ")
 	fmt.Scanln(&EntryNum)
 
-	//loop through asking for pokemon based on how many entries were inputted 
+	//loop through asking for pokemon based on how many entries were inputted
 	for i := 1; i <= EntryNum; i++ {
 		THISpokedexMAP[NewPokedex()] = NewPokemon()
 		//fmt.Println(THISpokedexMAP)
-	} 
+	}
 	//returns the map
-return THISpokedexMAP
+	return THISpokedexMAP
 }
-
 
 func main() {
 	//make a map - automatically sorts on key make(map[key]value)
@@ -57,7 +56,6 @@ func main() {
 	//print in user defined order
 	fmt.Println(pokedexMAP[3], pokedexMAP[4], pokedexMAP[1])
 
-	
 	//new map entry
 	pokedexMAP[NewPokedex()] = NewPokemon()
 

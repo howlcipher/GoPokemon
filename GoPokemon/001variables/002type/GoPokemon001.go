@@ -18,22 +18,24 @@ These are only some of the types available in Go.  You can also make your own ty
 //  name    type     value
 var pokemon string = "Pikachu"
 
-//  name    type  value
+// name    type  value
 var pokedex int = 25
 
-//   type      underlying type
+// type      underlying type
 type solarBeam bool
 
-//structs are a collection of types
-//   type      underlying type
+// structs are a collection of types
+//
+//	type      underlying type
 type grassType struct {
 	name      string
 	number    int
 	solarBeam bool
 }
 
-//slices are a collection of one type
-//  name           type (a slice of string)
+// slices are a collection of one type
+//
+//	name           type (a slice of string)
 var waterPokemon = []string{"Psyduck", "Staryu", "Shellder"}
 
 func main() {

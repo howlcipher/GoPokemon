@@ -4,7 +4,7 @@ import "fmt"
 
 //1 ints are one of the many numerical value systems within the Go language.  Ints represent the value of whole numbers.  Fractional numbers can be used with the type float.
 
-//   name      type  value
+// name      type  value
 var charmander int = 3
 
 //2 when "+" concatenating strings the strings are forced to+gether("together").
