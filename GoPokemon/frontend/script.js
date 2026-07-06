@@ -125,43 +125,123 @@ func main() {
         }
     ];
 
+    let currentScreen = 'main'; // main, pokedex, detail
+    let mainSelectedIndex = 1; // 0: Source, 1: Explore
+    let pokedexSelectedIndex = 0; // 0 to concepts.length - 1
+
+    const updateSelection = () => {
+        document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
+        if (currentScreen === 'main') {
+            const btns = [document.getElementById('source-btn'), document.getElementById('explore-btn')];
+            if (btns[mainSelectedIndex]) btns[mainSelectedIndex].classList.add('selected');
+        } else if (currentScreen === 'pokedex') {
+            const items = conceptList.querySelectorAll('li');
+            if (items[pokedexSelectedIndex]) {
+                items[pokedexSelectedIndex].classList.add('selected');
+                items[pokedexSelectedIndex].scrollIntoView({ block: 'nearest' });
+            }
+        }
+    };
+
+    function switchScreen(newScreen) {
+        currentScreen = newScreen;
+        mainScreen.style.display = newScreen === 'main' ? 'block' : 'none';
+        pokedexScreen.style.display = newScreen === 'pokedex' ? 'block' : 'none';
+        detailScreen.style.display = newScreen === 'detail' ? 'block' : 'none';
+        updateSelection();
+    }
+
     // Populate Concept List
     concepts.forEach((concept, index) => {
         const li = document.createElement('li');
         li.textContent = concept.title;
         li.addEventListener('click', () => {
+            pokedexSelectedIndex = index;
             detailTitle.textContent = concept.title;
-            detailCode.textContent = concept.code;
+            const codeContainer = document.getElementById('detail-code');
+            codeContainer.textContent = concept.code;
+            codeContainer.scrollTop = 0; // reset scroll
+            
             if (concept.sprite) {
                 detailSprite.src = concept.sprite;
                 detailSprite.style.display = 'inline-block';
             } else {
                 detailSprite.style.display = 'none';
             }
-            pokedexScreen.style.display = 'none';
-            detailScreen.style.display = 'block';
+            switchScreen('detail');
         });
         conceptList.appendChild(li);
     });
 
-    if (exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-            mainScreen.style.display = 'none';
-            pokedexScreen.style.display = 'block';
-        });
-    }
+    if (exploreBtn) exploreBtn.addEventListener('click', () => switchScreen('pokedex'));
+    if (backToMainBtn) backToMainBtn.addEventListener('click', () => switchScreen('main'));
+    if (backToPokedexBtn) backToPokedexBtn.addEventListener('click', () => switchScreen('pokedex'));
 
-    if (backToMainBtn) {
-        backToMainBtn.addEventListener('click', () => {
-            pokedexScreen.style.display = 'none';
-            mainScreen.style.display = 'block';
-        });
-    }
+    // Controller Logic
+    const handleUp = () => {
+        if (currentScreen === 'main') {
+            mainSelectedIndex = Math.max(0, mainSelectedIndex - 1);
+            updateSelection();
+        } else if (currentScreen === 'pokedex') {
+            pokedexSelectedIndex = Math.max(0, pokedexSelectedIndex - 1);
+            updateSelection();
+        } else if (currentScreen === 'detail') {
+            document.getElementById('detail-code').scrollTop -= 20;
+        }
+    };
 
-    if (backToPokedexBtn) {
-        backToPokedexBtn.addEventListener('click', () => {
-            detailScreen.style.display = 'none';
-            pokedexScreen.style.display = 'block';
-        });
-    }
+    const handleDown = () => {
+        if (currentScreen === 'main') {
+            mainSelectedIndex = Math.min(1, mainSelectedIndex + 1);
+            updateSelection();
+        } else if (currentScreen === 'pokedex') {
+            pokedexSelectedIndex = Math.min(concepts.length - 1, pokedexSelectedIndex + 1);
+            updateSelection();
+        } else if (currentScreen === 'detail') {
+            document.getElementById('detail-code').scrollTop += 20;
+        }
+    };
+
+    const handleA = () => {
+        if (currentScreen === 'main') {
+            if (mainSelectedIndex === 0) document.getElementById('source-btn').click();
+            else exploreBtn.click();
+        } else if (currentScreen === 'pokedex') {
+            const items = conceptList.querySelectorAll('li');
+            if (items[pokedexSelectedIndex]) items[pokedexSelectedIndex].click();
+        }
+    };
+
+    const handleB = () => {
+        if (currentScreen === 'pokedex') backToMainBtn.click();
+        else if (currentScreen === 'detail') backToPokedexBtn.click();
+    };
+
+    const handleStart = () => {
+        if (currentScreen === 'main') exploreBtn.click();
+    };
+
+    const handleSelect = () => {
+        themeToggleBtn.click();
+    };
+
+    // Attach to visual buttons
+    document.querySelector('.d-pad-btn.up').addEventListener('click', handleUp);
+    document.querySelector('.d-pad-btn.down').addEventListener('click', handleDown);
+    document.querySelector('.action-btn.a-btn').addEventListener('click', handleA);
+    document.querySelector('.action-btn.b-btn').addEventListener('click', handleB);
+    document.querySelector('.sys-btn.start-btn').addEventListener('click', handleStart);
+    document.querySelector('.sys-btn.select-btn').addEventListener('click', handleSelect);
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowUp') { e.preventDefault(); handleUp(); }
+        if (e.key === 'ArrowDown') { e.preventDefault(); handleDown(); }
+        if (e.key.toLowerCase() === 'z' || e.key === 'Enter') handleA();
+        if (e.key.toLowerCase() === 'x' || e.key === 'Backspace' || e.key === 'Escape') handleB();
+        if (e.key === 'Shift') handleSelect();
+    });
+
+    // Initialize Selection
+    updateSelection();
 });
