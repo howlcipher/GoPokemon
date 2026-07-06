@@ -43,45 +43,84 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const conceptList = document.getElementById('concept-list');
     const detailTitle = document.getElementById('detail-title');
-    const detailCode = document.getElementById('detail-code');
+    const detailSprite = document.getElementById('detail-sprite');
 
     const concepts = [
         {
             title: "001 Variables",
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/25.png", // Pikachu
             code: `// Declaring variables in Go
+// 1. Declare without value (type string)
 var pokeball string
+
+// 2. Declare with value (type inferred)
 var pokemon = "Psyduck"
+
+// 3. Declare with type and value
 var Pikachu string = "Pikachu"
-Jolteon := "Jolteon" // inside func`
+
+// 4. Short declaration (inside func only)
+Jolteon := "Jolteon"`
         },
         {
             title: "002 Operators",
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/68.png", // Machamp
             code: `// Basic types and operators
 candy := 6
 var potion = 9
 var xSpeed int = 3
-badges := []int{1, 2, 3}`
+
+// Slices
+badges := []int{1, 2, 3}
+var pokedex = []string{"charmander", "squirtle", "bulbasaur"}`
         },
         {
             title: "003 Control Flow",
-            code: `// Conditionals and Loops
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/65.png", // Alakazam
+            code: `// Conditionals
 if HP < 10 {
     usePotion()
+} else if HP < 50 {
+    useSuperPotion()
+} else {
+    attack()
 }
+
+// Loops
 for i := 0; i < 3; i++ {
     throwPokeball()
 }`
         },
         {
             title: "004 Functions",
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/6.png", // Charizard
             code: `// Functions and Methods
 type fireStyle interface {
     ember()
 }
+
 func (p fire) ember() {
     if p.fireMoves {
         fmt.Println(p.name, "used ember")
     }
+}
+
+// Call function
+declareInFunc()`
+        },
+        {
+            title: "005 Types",
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/137.png", // Porygon
+            code: `// Custom Types
+type Pokemon struct {
+    Name string
+    HP   int
+    Type string
+}
+
+func main() {
+    p := Pokemon{Name: "Porygon", HP: 65, Type: "Normal"}
+    fmt.Println(p.Name, p.HP)
 }`
         }
     ];
@@ -93,6 +132,12 @@ func (p fire) ember() {
         li.addEventListener('click', () => {
             detailTitle.textContent = concept.title;
             detailCode.textContent = concept.code;
+            if (concept.sprite) {
+                detailSprite.src = concept.sprite;
+                detailSprite.style.display = 'inline-block';
+            } else {
+                detailSprite.style.display = 'none';
+            }
             pokedexScreen.style.display = 'none';
             detailScreen.style.display = 'block';
         });
