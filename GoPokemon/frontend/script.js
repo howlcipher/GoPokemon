@@ -45,38 +45,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailTitle = document.getElementById('detail-title');
     const detailSprite = document.getElementById('detail-sprite');
 
+    const genSpriteUrl = () => `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/${Math.floor(Math.random() * 151) + 1}.png`;
+
     const concepts = [
         {
-            title: "001 Variables",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/25.png", // Pikachu
+            title: "Variables: Declaration",
+            sprite: genSpriteUrl(),
             code: `// Declaring variables in Go
-// 1. Declare without value (type string)
 var pokeball string
-
-// 2. Declare with value (type inferred)
 var pokemon = "Psyduck"
-
-// 3. Declare with type and value
 var Pikachu string = "Pikachu"
-
-// 4. Short declaration (inside func only)
-Jolteon := "Jolteon"`
+Jolteon := "Jolteon" // Inside func`
         },
         {
-            title: "002 Operators",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/68.png", // Machamp
-            code: `// Basic types and operators
+            title: "Variables: Type",
+            sprite: genSpriteUrl(),
+            code: `// Basic types in Go
+var level int = 5
+var isCaught bool = true
+var height float64 = 0.4
+var name string = "Pikachu"`
+        },
+        {
+            title: "Variables: String",
+            sprite: genSpriteUrl(),
+            code: `// String operations
+trainer := "Ash"
+region := "Kanto"
+intro := "My name is " + trainer
+fmt.Println(intro + " from " + region)`
+        },
+        {
+            title: "Variables: Int",
+            sprite: genSpriteUrl(),
+            code: `// Integer math
+var hp int = 100
+var damage int = 15
+hp = hp - damage
+fmt.Println("Remaining HP:", hp)`
+        },
+        {
+            title: "Variables: Slice",
+            sprite: genSpriteUrl(),
+            code: `// Slices (Dynamic Arrays)
+pokedex := []string{"Pikachu", "Ivysaur", "Ponyta"}
+pokedex = append(pokedex, "Hitmonchan")
+
+fmt.Println("Predefined:", pokedex)`
+        },
+        {
+            title: "Variables: Map",
+            sprite: genSpriteUrl(),
+            code: `// Maps (Key-Value pairs)
+pokeStats := make(map[string]int)
+pokeStats["Attack"] = 55
+pokeStats["Defense"] = 40
+
+fmt.Println("Pikachu Attack:", pokeStats["Attack"])`
+        },
+        {
+            title: "Variables: Struct",
+            sprite: genSpriteUrl(),
+            code: `// Structs (Custom Types)
+type Pokemon struct {
+    Name string
+    HP   int
+    Type string
+}
+
+p := Pokemon{Name: "Porygon", HP: 65, Type: "Normal"}
+fmt.Println(p.Name, p.HP)`
+        },
+        {
+            title: "Operators",
+            sprite: genSpriteUrl(),
+            code: `// Operators
 candy := 6
-var potion = 9
-var xSpeed int = 3
+potion := 9
+totalItems := candy + potion
+hasEnough := candy >= 5
 
-// Slices
-badges := []int{1, 2, 3}
-var pokedex = []string{"charmander", "squirtle", "bulbasaur"}`
+fmt.Println(totalItems, hasEnough)`
         },
         {
-            title: "003 Control Flow",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/65.png", // Alakazam
+            title: "Control Flow: Conditionals",
+            sprite: genSpriteUrl(),
             code: `// Conditionals
 if HP < 10 {
     usePotion()
@@ -84,17 +137,25 @@ if HP < 10 {
     useSuperPotion()
 } else {
     attack()
-}
-
-// Loops
-for i := 0; i < 3; i++ {
-    throwPokeball()
 }`
         },
         {
-            title: "004 Functions",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/6.png", // Charizard
-            code: `// Functions and Methods
+            title: "Control Flow: Loops",
+            sprite: genSpriteUrl(),
+            code: `// For Loops
+for i := 0; i < 3; i++ {
+    throwPokeball()
+}
+
+// Ranging over a slice
+for index, p := range pokedex {
+    fmt.Println(index, p)
+}`
+        },
+        {
+            title: "Functions & Interfaces",
+            sprite: genSpriteUrl(),
+            code: `// Functions and Interfaces
 type fireStyle interface {
     ember()
 }
@@ -103,24 +164,6 @@ func (p fire) ember() {
     if p.fireMoves {
         fmt.Println(p.name, "used ember")
     }
-}
-
-// Call function
-declareInFunc()`
-        },
-        {
-            title: "005 Types",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/137.png", // Porygon
-            code: `// Custom Types
-type Pokemon struct {
-    Name string
-    HP   int
-    Type string
-}
-
-func main() {
-    p := Pokemon{Name: "Porygon", HP: 65, Type: "Normal"}
-    fmt.Println(p.Name, p.HP)
 }`
         }
     ];
