@@ -1,0 +1,384 @@
+:root {
+    /* Light Mode - Classic Gameboy */
+    --gb-case: #C4CFA1; /* slightly yellowish grey */
+    --gb-case-shadow: #8B956D;
+    --gb-screen-border: #5A5A5A;
+    --gb-screen-bg: #8BAC0F; /* Classic Gameboy Green */
+    --gb-screen-text: #0F380F; /* Dark green/black pixel color */
+    --gb-screen-text-shadow: #306230;
+    --gb-dpad: #1A1A1A;
+    --gb-action-btn: #8B0040; /* Maroon red */
+    --gb-sys-btn: #696969;
+    --gb-text: #0F380F;
+    
+    /* UI Text */
+    --font-main: 'Press Start 2P', monospace;
+}
+
+[data-theme="dark"] {
+    /* Dark Mode - Gameboy Pocket / Color Dark variant */
+    --gb-case: #2C2C2C;
+    --gb-case-shadow: #111111;
+    --gb-screen-border: #1A1A1A;
+    --gb-screen-bg: #2b493e; /* darker teal/green */
+    --gb-screen-text: #e0f8cf; /* bright pixel color */
+    --gb-screen-text-shadow: #88c070;
+    --gb-dpad: #0F0F0F;
+    --gb-action-btn: #A00050;
+    --gb-sys-btn: #454545;
+    --gb-text: #e0f8cf;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: var(--font-main);
+    color: var(--gb-text);
+    transition: background-color 0.3s;
+}
+
+.gameboy-container {
+    background-color: var(--gb-case);
+    border-radius: 20px 20px 60px 20px;
+    padding: 20px;
+    width: 380px;
+    box-shadow: 
+        inset -5px -5px 15px rgba(0,0,0,0.1), 
+        inset 5px 5px 15px rgba(255,255,255,0.4),
+        0 20px 30px rgba(0,0,0,0.5);
+    border: 2px solid var(--gb-case-shadow);
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+
+.power-light {
+    width: 10px;
+    height: 10px;
+    background-color: #FF0000;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #FF0000;
+}
+
+h1 {
+    font-size: 14px;
+    color: var(--gb-screen-border);
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    outline: none;
+}
+
+.screen-border {
+    background-color: var(--gb-screen-border);
+    border-radius: 10px 10px 40px 10px;
+    padding: 20px 30px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+.screen {
+    background-color: var(--gb-screen-bg);
+    border: inset 4px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    height: 200px;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    /* pixel effect */
+    background-image: 
+      linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+    background-size: 3px 3px;
+    transition: background-color 0.3s;
+}
+
+.content-wrapper {
+    padding: 15px;
+    color: var(--gb-screen-text);
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+h2 {
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.sprite-container {
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.pokemon-sprite {
+    max-height: 100%;
+    image-rendering: pixelated;
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
+}
+
+p {
+    font-size: 8px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-btn {
+    font-family: var(--font-main);
+    background-color: transparent;
+    color: var(--gb-screen-text);
+    border: 2px solid var(--gb-screen-text);
+    padding: 8px 10px;
+    font-size: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.2s, color 0.2s;
+    width: 80%;
+}
+
+.menu-btn:hover {
+    background-color: var(--gb-screen-text);
+    color: var(--gb-screen-bg);
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 40px;
+}
+
+/* D-Pad */
+.d-pad {
+    position: relative;
+    width: 90px;
+    height: 90px;
+}
+
+.d-pad-btn {
+    position: absolute;
+    background-color: var(--gb-dpad);
+    width: 30px;
+    height: 30px;
+    border-radius: 2px;
+    box-shadow: inset 1px 1px 2px rgba(255,255,255,0.2), inset -1px -1px 2px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+.d-pad-btn:active {
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.d-pad-center {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--gb-dpad);
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.8);
+}
+.d-pad-center::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.05);
+}
+
+.up { top: 0; left: 30px; border-radius: 5px 5px 0 0; }
+.right { top: 30px; right: 0; border-radius: 0 5px 5px 0; }
+.down { bottom: 0; left: 30px; border-radius: 0 0 5px 5px; }
+.left { top: 30px; left: 0; border-radius: 5px 0 0 5px; }
+
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    transform: rotate(-25deg);
+    margin-top: 10px;
+}
+
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--gb-action-btn);
+    border: none;
+    box-shadow: inset 2px 2px 5px rgba(255,255,255,0.3), inset -2px -2px 5px rgba(0,0,0,0.5), 2px 2px 3px rgba(0,0,0,0.3);
+    cursor: pointer;
+}
+.action-btn:active {
+    box-shadow: inset 3px 3px 6px rgba(0,0,0,0.6);
+    transform: scale(0.96);
+}
+
+.btn-label {
+    font-size: 10px;
+    color: var(--gb-screen-border);
+    margin-top: 5px;
+    transform: rotate(25deg);
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* System Buttons */
+.system-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.sys-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.sys-btn {
+    width: 40px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: var(--gb-sys-btn);
+    border: none;
+    transform: rotate(-25deg);
+    box-shadow: inset 1px 1px 3px rgba(255,255,255,0.2), inset -1px -1px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+.sys-btn:active {
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.6);
+}
+
+.sys-btn-label {
+    font-size: 8px;
+    color: var(--gb-screen-border);
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+/* Speaker Grill */
+.speaker-grill {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    transform: rotate(-25deg);
+    gap: 4px;
+}
+
+.grill-line {
+    width: 4px;
+    height: 50px;
+    background-color: var(--gb-case-shadow);
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.concept-list {
+    list-style: none;
+    text-align: left;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.concept-list li {
+    font-size: 8px;
+    margin: 8px 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+
+.concept-list li::before {
+    content: '▶';
+    margin-right: 5px;
+    opacity: 0;
+}
+
+.concept-list li:hover::before {
+    opacity: 1;
+}
+
+.code-container {
+    text-align: left;
+    font-size: 6px;
+    line-height: 1.4;
+    white-space: pre-wrap;
+    background-color: rgba(0,0,0,0.05);
+    padding: 8px;
+    border: 1px dashed var(--gb-screen-text);
+    margin-bottom: 15px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.code-container::-webkit-scrollbar {
+    width: 3px;
+}
+.code-container::-webkit-scrollbar-thumb {
+    background: var(--gb-screen-text);
+}
+
+.back-btn {
+    margin-top: 10px;
+}
+
+/* Scrollbar styling for the screen */
+.screen::-webkit-scrollbar {
+    width: 5px;
+}
+.screen::-webkit-scrollbar-track {
+    background: transparent;
+}
+.screen::-webkit-scrollbar-thumb {
+    background: var(--gb-screen-text);
+}
