@@ -59,7 +59,9 @@ body {
     transition: background-color 0.3s, border-color 0.3s;
     position: relative;
     overflow: hidden;
-    transform: scale(1.35); /* Make UI bigger */
+    /* Dynamically scale to fit screen, max scale 1.35 */
+    transform: scale(min(1.35, calc(95vw / 380), calc(95vh / 700)));
+    transform-origin: center center;
 }
 
 header {
