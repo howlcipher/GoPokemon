@@ -168,7 +168,7 @@ func (p fire) ember() {
         }
     ];
 
-    let currentScreen = 'main'; // main, pokedex, detail
+    let currentScreen = 'boot'; // boot, main, pokedex, detail
     let mainSelectedIndex = 1; // 0: Source, 1: Explore
     let pokedexSelectedIndex = 0; // 0 to concepts.length - 1
 
@@ -188,11 +188,19 @@ func (p fire) ember() {
 
     function switchScreen(newScreen) {
         currentScreen = newScreen;
-        mainScreen.style.display = newScreen === 'main' ? 'block' : 'none';
-        pokedexScreen.style.display = newScreen === 'pokedex' ? 'block' : 'none';
-        detailScreen.style.display = newScreen === 'detail' ? 'block' : 'none';
+        if (document.getElementById('boot-screen')) document.getElementById('boot-screen').style.display = newScreen === 'boot' ? 'flex' : 'none';
+        if (mainScreen) mainScreen.style.display = newScreen === 'main' ? 'block' : 'none';
+        if (pokedexScreen) pokedexScreen.style.display = newScreen === 'pokedex' ? 'block' : 'none';
+        if (detailScreen) detailScreen.style.display = newScreen === 'detail' ? 'block' : 'none';
         updateSelection();
     }
+
+    // Play boot animation
+    setTimeout(() => {
+        if (currentScreen === 'boot') {
+            switchScreen('main');
+        }
+    }, 2200); // Wait 2.2s for animation to complete
 
     // Populate Concept List
     concepts.forEach((concept, index) => {

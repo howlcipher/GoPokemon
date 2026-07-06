@@ -11,22 +11,28 @@
 </head>
 <body>
     <div class="gameboy-container">
-        <header>
-            <div class="power-light"></div>
-            <h1 class="gb-logo">
-                <span class="logo-go">Go</span><span class="c-1">P</span><span class="c-2">o</span><span class="c-3">k</span><span class="c-4">e</span><span class="c-5">m</span><span class="c-1">o</span><span class="c-2">n</span>
-            </h1>
+        <header style="display: flex; justify-content: flex-end;">
             <button id="theme-toggle" aria-label="Toggle dark/light mode">
                 <span class="theme-icon">🌙</span>
             </button>
         </header>
 
         <main class="screen-border">
+            <div class="power-indicator">
+                <div class="power-light"></div>
+                <span class="power-text">POWER</span>
+            </div>
             <div class="screen">
-                <div class="content-wrapper" id="main-screen">
+                <!-- Boot Screen -->
+                <div id="boot-screen" class="boot-screen">
+                    <div class="boot-logo gb-logo">
+                        <span class="logo-go" style="color: #444; text-shadow: none;">Go</span><span class="c-1" style="text-shadow: none;">P</span><span class="c-2" style="text-shadow: none;">o</span><span class="c-3" style="text-shadow: none;">k</span><span class="c-4" style="text-shadow: none;">e</span><span class="c-5" style="text-shadow: none;">m</span><span class="c-1" style="text-shadow: none;">o</span><span class="c-2" style="text-shadow: none;">n</span>
+                    </div>
+                </div>
+
+                <div class="content-wrapper" id="main-screen" style="display: none;">
                     <h2>Welcome to GoPokemon</h2>
                     <div class="sprite-container">
-                        <!-- We will insert the generated image here -->
                         <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/150.png" alt="Retro Pokemon Sprite" class="pokemon-sprite" onerror="this.style.display='none'">
                     </div>
                     <p>Experience the original series aesthetic.</p>
@@ -57,6 +63,12 @@
                     </div>
                     <button class="menu-btn back-btn" id="back-to-pokedex">BACK</button>
                 </div>
+            </div>
+            
+            <div class="bezel-bottom">
+                <h1 class="gb-logo">
+                    <span class="logo-go">Go</span><span class="c-1">P</span><span class="c-2">o</span><span class="c-3">k</span><span class="c-4">e</span><span class="c-5">m</span><span class="c-1">o</span><span class="c-2">n</span>
+                </h1>
             </div>
         </main>
 
@@ -91,14 +103,7 @@
                 <span class="sys-btn-label">START</span>
             </div>
         </div>
-        <div class="speaker-grill">
-            <div class="grill-line"></div>
-            <div class="grill-line"></div>
-            <div class="grill-line"></div>
-            <div class="grill-line"></div>
-            <div class="grill-line"></div>
-            <div class="grill-line"></div>
-        </div>
+        <div class="speaker-grill"></div>
     </div>
     
     <script src="script.js"></script>
