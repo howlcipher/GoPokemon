@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const concepts = [
         {
             title: "001 Variables",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/25.png", // Pikachu
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/25.png", // Pikachu
             code: `// Declaring variables in Go
 // 1. Declare without value (type string)
 var pokeball string
@@ -64,7 +64,7 @@ Jolteon := "Jolteon"`
         },
         {
             title: "002 Operators",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/68.png", // Machamp
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/68.png", // Machamp
             code: `// Basic types and operators
 candy := 6
 var potion = 9
@@ -76,7 +76,7 @@ var pokedex = []string{"charmander", "squirtle", "bulbasaur"}`
         },
         {
             title: "003 Control Flow",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/65.png", // Alakazam
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/65.png", // Alakazam
             code: `// Conditionals
 if HP < 10 {
     usePotion()
@@ -93,7 +93,7 @@ for i := 0; i < 3; i++ {
         },
         {
             title: "004 Functions",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/6.png", // Charizard
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/6.png", // Charizard
             code: `// Functions and Methods
 type fireStyle interface {
     ember()
@@ -110,7 +110,7 @@ declareInFunc()`
         },
         {
             title: "005 Types",
-            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-i/red-blue/transparent/137.png", // Porygon
+            sprite: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-ii/crystal/transparent/137.png", // Porygon
             code: `// Custom Types
 type Pokemon struct {
     Name string

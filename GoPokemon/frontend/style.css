@@ -1,32 +1,32 @@
 :root {
-    /* Light Mode - Classic Gameboy */
-    --gb-case: #C4CFA1; /* slightly yellowish grey */
-    --gb-case-shadow: #8B956D;
-    --gb-screen-border: #5A5A5A;
-    --gb-screen-bg: #8BAC0F; /* Classic Gameboy Green */
-    --gb-screen-text: #0F380F; /* Dark green/black pixel color */
-    --gb-screen-text-shadow: #306230;
-    --gb-dpad: #1A1A1A;
-    --gb-action-btn: #8B0040; /* Maroon red */
-    --gb-sys-btn: #696969;
-    --gb-text: #0F380F;
+    /* Light Mode - Grape Gameboy Color */
+    --gb-case: #6a329f; /* Purple Grape */
+    --gb-case-shadow: #4d2375;
+    --gb-screen-border: #1a1a1a;
+    --gb-screen-bg: #e8e8e8; /* GBC screen off-white */
+    --gb-screen-text: #111111; /* Black text */
+    --gb-screen-text-shadow: #cccccc;
+    --gb-dpad: #222222;
+    --gb-action-btn: #222222;
+    --gb-sys-btn: #222222;
+    --gb-text: #ffffff;
     
     /* UI Text */
     --font-main: 'Press Start 2P', monospace;
 }
 
 [data-theme="dark"] {
-    /* Dark Mode - Gameboy Pocket / Color Dark variant */
+    /* Dark Mode - Gameboy Color Black Variant */
     --gb-case: #2C2C2C;
     --gb-case-shadow: #111111;
     --gb-screen-border: #1A1A1A;
-    --gb-screen-bg: #2b493e; /* darker teal/green */
-    --gb-screen-text: #e0f8cf; /* bright pixel color */
-    --gb-screen-text-shadow: #88c070;
+    --gb-screen-bg: #1e1e24; /* Dark screen for backlight feel */
+    --gb-screen-text: #00ffcc; /* Glowing cyan text */
+    --gb-screen-text-shadow: #008866;
     --gb-dpad: #0F0F0F;
-    --gb-action-btn: #A00050;
-    --gb-sys-btn: #454545;
-    --gb-text: #e0f8cf;
+    --gb-action-btn: #1A1A1A;
+    --gb-sys-btn: #1A1A1A;
+    --gb-text: #ffffff;
 }
 
 * {
@@ -80,9 +80,9 @@ header {
 
 h1 {
     font-size: 14px;
-    color: var(--gb-screen-border);
+    color: var(--gb-text);
     letter-spacing: 2px;
-    text-shadow: 1px 1px 0px rgba(255,255,255,0.3);
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
 }
 
 #theme-toggle {
@@ -261,7 +261,7 @@ p {
 
 .btn-label {
     font-size: 10px;
-    color: var(--gb-screen-border);
+    color: var(--gb-text);
     margin-top: 5px;
     transform: rotate(25deg);
     font-family: sans-serif;
@@ -300,7 +300,7 @@ p {
 
 .sys-btn-label {
     font-size: 8px;
-    color: var(--gb-screen-border);
+    color: var(--gb-text);
     font-family: sans-serif;
     font-weight: bold;
 }
