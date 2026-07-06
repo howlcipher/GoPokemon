@@ -172,7 +172,7 @@ p {
     width: 80%;
 }
 
-.menu-btn:hover {
+.menu-btn:hover, .menu-btn.selected {
     background-color: var(--gb-screen-text);
     color: var(--gb-screen-bg);
 }
@@ -345,7 +345,7 @@ p {
     opacity: 0;
 }
 
-.concept-list li:hover::before {
+.concept-list li:hover::before, .concept-list li.selected::before {
     opacity: 1;
 }
 
