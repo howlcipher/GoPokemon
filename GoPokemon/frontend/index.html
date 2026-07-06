@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GoPokemon - A retro Gameboy styled web application.">
+    <title>GoPokemon</title>
+    <!-- Use a retro pixel font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="gameboy-container">
+        <header>
+            <div class="power-light"></div>
+            <h1>GoPokemon</h1>
+            <button id="theme-toggle" aria-label="Toggle dark/light mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main class="screen-border">
+            <div class="screen">
+                <div class="content-wrapper" id="main-screen">
+                    <h2>Welcome to GoPokemon</h2>
+                    <div class="sprite-container">
+                        <!-- We will insert the generated image here -->
+                        <img src="assets/pokemon_sprite.png" alt="Retro Pokemon Sprite" class="pokemon-sprite" onerror="this.style.display='none'">
+                    </div>
+                    <p>Experience the original series aesthetic.</p>
+                    
+                    <div class="menu">
+                        <button class="menu-btn" onclick="window.location.href='https://github.com/howlcipher/GoPokemon'">SOURCE CODE</button>
+                        <button class="menu-btn" id="explore-btn">EXPLORE</button>
+                    </div>
+                </div>
+
+                <!-- Pokedex Menu Screen -->
+                <div class="content-wrapper" id="pokedex-screen" style="display: none;">
+                    <h2>Go Concepts</h2>
+                    <ul id="concept-list" class="concept-list">
+                        <!-- Populated by JS -->
+                    </ul>
+                    <button class="menu-btn back-btn" id="back-to-main">BACK</button>
+                </div>
+
+                <!-- Detail View Screen -->
+                <div class="content-wrapper" id="detail-screen" style="display: none;">
+                    <h2 id="detail-title">Title</h2>
+                    <div class="code-container" id="detail-code">
+                        <!-- Code injected here -->
+                    </div>
+                    <button class="menu-btn back-btn" id="back-to-pokedex">BACK</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <div class="d-pad">
+                <div class="d-pad-btn up"></div>
+                <div class="d-pad-btn right"></div>
+                <div class="d-pad-btn down"></div>
+                <div class="d-pad-btn left"></div>
+                <div class="d-pad-center"></div>
+            </div>
+            
+            <div class="action-buttons">
+                <div class="btn-group">
+                    <button class="action-btn b-btn"></button>
+                    <span class="btn-label">B</span>
+                </div>
+                <div class="btn-group">
+                    <button class="action-btn a-btn"></button>
+                    <span class="btn-label">A</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="system-buttons">
+            <div class="sys-btn-group">
+                <button class="sys-btn select-btn"></button>
+                <span class="sys-btn-label">SELECT</span>
+            </div>
+            <div class="sys-btn-group">
+                <button class="sys-btn start-btn"></button>
+                <span class="sys-btn-label">START</span>
+            </div>
+        </div>
+        <div class="speaker-grill">
+            <div class="grill-line"></div>
+            <div class="grill-line"></div>
+            <div class="grill-line"></div>
+            <div class="grill-line"></div>
+            <div class="grill-line"></div>
+            <div class="grill-line"></div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
