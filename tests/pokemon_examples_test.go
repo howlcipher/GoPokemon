@@ -10,7 +10,7 @@ import (
 
 func TestGoPokemonExamples(t *testing.T) {
 	// Glob doesn't search recursively arbitrarily deep, so we use WalkDir instead
-	err := filepath.WalkDir("../GoPokemon", func(path string, d os.DirEntry, err error) error {
+	err := filepath.WalkDir("../lessons", func(path string, d os.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
